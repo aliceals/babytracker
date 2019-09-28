@@ -1,5 +1,5 @@
-var pooButton = document.getElementById("poo");
-var peeButton = document.getElementById("pee");
+var pooButton = document.getElementById("Poo");
+var peeButton = document.getElementById("Pee");
 var enterButton = document.getElementById("enter");
 var list = document.getElementById("list");
 
@@ -14,8 +14,8 @@ pooButton.addEventListener('click', buttonPressed
 peeButton.addEventListener('click', buttonPressed
 )
 
-enterButton.addEventListener('click', buttonPressed
-)
+// enterButton.addEventListener('click', buttonPressed
+// )
 
 
 function apiPost(type) {
@@ -33,10 +33,13 @@ function apiPost(type) {
         .then(json => {
             console.log(json);
             var x = document.createElement("LI");
-            x.innerHTML = json[json.length - 1];
+            var today = new Date();
+            var time = today.getHours() + ":" + today.getMinutes();
+            x.innerHTML = json[json.length - 1] + " at " + time;
             list.appendChild(x);
-
         })
 
 }
+
+
 
