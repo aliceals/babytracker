@@ -3,7 +3,7 @@ var peeButton = document.getElementById("pee");
 var enterButton = document.getElementById("enter")
 
 function buttonPressed(e) {
-    console.log(e.target.id + " has been pressed")
+    apiPost(e.target.id)
 }
 
 
@@ -16,4 +16,20 @@ peeButton.addEventListener('click', buttonPressed
 enterButton.addEventListener('click', buttonPressed
 )
 
+
+function apiPost(type) {
+    fetch("/api/babytracker", {
+        method: "POST",
+        body: JSON.stringify({
+            type: type
+        }),
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+        .then(response => {
+            console.log(response.json());
+        })
+
+}
 
