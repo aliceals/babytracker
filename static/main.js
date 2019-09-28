@@ -26,9 +26,11 @@ function apiPost(type) {
         headers: {
             "Content-Type": "application/json"
         }
+    }).then(response => {
+        return response.json()
     })
-        .then(response => {
-            console.log(response.json());
+        .then(json => {
+            console.log(json);
         })
 
 }

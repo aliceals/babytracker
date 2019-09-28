@@ -13,9 +13,9 @@ var storedEvents = [];
 app.use('/', express.static('static'));
 
 app.post('/api/babytracker', function (req, res) {
-    res.send('POST request to the homepage');
     storedEvents.push(req.body.type);
     console.log(storedEvents);
+    res.send(storedEvents);
 })
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
