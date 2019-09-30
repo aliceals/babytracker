@@ -37,8 +37,14 @@ function apiPost(type) {
                 var x = document.createElement("LI");
                 var today = new Date(events[i].time);
                 console.log(today);
+                function addZero(i) {
+                    if (i < 10) {
+                        i = "0" + i;
+                    }
+                    return i;
+                }
 
-                var timeToLog = today.getHours() + ":" + today.getMinutes();
+                var timeToLog = today.getHours() + ":" + addZero(today.getMinutes());
 
                 x.innerHTML = events[i].type + " at " + timeToLog;
                 /*events[events.length - 1] + " at " + time*/;
@@ -49,6 +55,7 @@ function apiPost(type) {
         })
 
 }
+
 
 
 
