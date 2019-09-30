@@ -30,13 +30,22 @@ function apiPost(type) {
     }).then(response => {
         return response.json()
     })
-        .then(json => {
-            console.log(json);
-            var x = document.createElement("LI");
-            var today = new Date();
-            var time = today.getHours() + ":" + today.getMinutes();
-            x.innerHTML = json[json.length - 1] + " at " + time;
-            list.appendChild(x);
+        .then(events => {
+            console.log(events);
+            list.innerHTML = '';
+            for (i = 0; i < events.length; i++) {
+                var x = document.createElement("LI");
+                var today = new Date(events[i].time);
+                console.log(today);
+
+                var timeToLog = today.getHours() + ":" + today.getMinutes();
+
+                x.innerHTML = events[i].type + " at " + timeToLog;
+                /*events[events.length - 1] + " at " + time*/;
+                list.appendChild(x);
+
+            }
+
         })
 
 }

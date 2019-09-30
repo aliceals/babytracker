@@ -13,7 +13,8 @@ var storedEvents = [];
 app.use('/', express.static('static'));
 
 app.post('/api/babytracker', function (req, res) {
-    storedEvents.push(req.body.type);
+    var event = { time: new Date(), type: req.body.type }
+    storedEvents.push(event);
     console.log(storedEvents);
     res.send(storedEvents);
 })
